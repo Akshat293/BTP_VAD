@@ -18,14 +18,11 @@ import torch.nn.functional as F
 import torchvision.transforms as T
 import os
 
-from google.colab import drive
-drive.mount('/content/drive')
-
 # Get the device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Get the data set
 OUTPUT_DIR = '/content/drive/MyDrive/audio-images/'
-!ls '/content/drive/MyDrive/audio-images/'
+
 
 # Hyperparameters
 IMAGE_HEIGHT = 256
@@ -33,7 +30,7 @@ IMAGE_WIDTH = 256
 BATCH_SIZE = 32
 num_classes = 10
 
-!pwd
+
 
 
 
@@ -155,7 +152,7 @@ with torch.no_grad():
 
     print('Test Accuracy of the model on the {} test images: {} %'.format(total, (correct / total) * 100))
 
-!ls '/content/drive/MyDrive/audio-images/class_0/'
+
 test_dataset = torchvision.datasets.ImageFolder(
     '/content/drive/MyDrive/audio-images/',
     transform=torchvision.transforms.Compose([
@@ -180,5 +177,5 @@ with torch.no_grad():
     _, predicted = torch.max(out.data, 1)
     print("Predicted class:", predicted)
 
-!pwd
+
 
